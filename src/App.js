@@ -33,7 +33,7 @@ function App () {
           <Route path='/admin' component={AdminGaader} />
           <Route path='/login' component={LoginAdmin} />
           <Route excat path="/opret" component={Gaadeopret} />
-          <Route exact path="/ret/:gaadeData_id" component={Gaaderet} />
+          <Route exact path="/ret/admin/:gaadeData_id" component={Gaaderet} />
           <Route exact path="/slet/:gaadeData_id" component={Gaadeslet} />
           
           </Switch>

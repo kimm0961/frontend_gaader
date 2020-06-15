@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { BrugerLogin } from "../shared/AuthAPI";
 
 
@@ -8,7 +8,7 @@ function LoginAdmin() {
     // State
 const [brugerInfo, setBrugerInfo] = useState({});
 
-// const history = useHistory();
+const history = useHistory();
 
 
 // Submit
@@ -18,8 +18,8 @@ const handleSubmit = e => {
 
   (async () => {
     setBrugerInfo(await BrugerLogin(brugerInfo));
-    // // redirect
-    // history.push("/admin");
+    // redirect
+    history.push("/admin");
   })();
 };
 
