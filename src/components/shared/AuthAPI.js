@@ -8,7 +8,8 @@ const AuthAPI = {
 // login
 export const BrugerLogin = async brugerInfo => {
   try {
-    let res = await axios.post(AuthAPI.baseUrl + "/login", brugerInfo, {withCredentials: true});
+    let res = await axios.post(AuthAPI.baseUrl + "/login", brugerInfo);
+    console.log(brugerInfo);
     return res.data;
   } catch (error) {
     console.log("Fejl:", error);

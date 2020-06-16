@@ -45,7 +45,7 @@ export const opretGaade = async gaadeData => {
 
 export const retGaade = async (gaadeData_id, gaadeData) => {
   try {
-    let res = await axios.patch(gaaderAPI.baseUrl + "/admin/" + gaadeData_id, gaadeData);
+    let res = await axios.patch(gaaderAPI.baseUrl + "/admin/" + gaadeData_id, gaadeData, { withCredentials: true });
     return res.data;
   } catch (error) {
     console.log("Fejl:", error);
