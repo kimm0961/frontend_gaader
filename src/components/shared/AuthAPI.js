@@ -8,7 +8,7 @@ const AuthAPI = {
 // login
 export const BrugerLogin = async brugerInfo => {
   try {
-    let res = await axios.post(AuthAPI.baseUrl + "/login", brugerInfo);
+    let res = await axios.post(AuthAPI.baseUrl + "/login", brugerInfo, { withCredentials: true });
     console.log(brugerInfo);
     return res.data;
   } catch (error) {
