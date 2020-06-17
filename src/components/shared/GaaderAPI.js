@@ -33,7 +33,7 @@ export const hentGaade = async cartoonData_id => {
 
 export const opretGaade = async gaadeData => {
   try {
-    let res = await axios.post(gaaderAPI.baseUrl + "/admin", gaadeData);
+    let res = await axios.post(gaaderAPI.baseUrl + "/admin", gaadeData, { withCredentials: true });
     console.log(res.data);
     return res.data;
   } catch (error) {
@@ -55,7 +55,7 @@ export const retGaade = async (gaadeData_id, gaadeData) => {
 // DELETE - slet en 
 export const sletGaade = async gaadeData_id => {
   try {
-    let res = await axios.delete(gaaderAPI.baseUrl + "/admin/" + gaadeData_id);
+    let res = await axios.delete(gaaderAPI.baseUrl + "/admin/" + gaadeData_id, { withCredentials: true });
     return res.data;
   } catch (error) {
     console.log("Fejl:", error);

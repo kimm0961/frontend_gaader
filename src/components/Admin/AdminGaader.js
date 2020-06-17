@@ -30,7 +30,7 @@ function AdminGaader() {
           <td className="font-weight-bold">{c.gaadeTekst}</td>
           <td className="font-italic">{c.gaadeSvar}</td>
           <td>
-            <Link to={"/ret/admin/" + c._id}>
+            <Link to={"/ret/" + c._id}>
             <button type="button" className="btn btn-primary">
               <span role="img" aria-label="ret">
                 &#9998;
