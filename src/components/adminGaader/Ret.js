@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { hentGaade, retGaade } from "../shared/GaaderAPI";
+import { hentGaade, retGaade } from "../API/GaaderAPI";
 import { useParams, useHistory, Link } from "react-router-dom";
 
-function Gaaderet() {
+function Ret() {
   
   // State
-
   const [gaadeData, setGaadeData] = useState();
 
 
   // History
-
   const history = useHistory();
 
   // Params
-
   const { gaadeData_id } = useParams();
 
   // useEffect
-
   useEffect(() => {
     (async () => {
       setGaadeData(await hentGaade(gaadeData_id));
@@ -27,7 +23,6 @@ function Gaaderet() {
 
 
   // Submit
-
   const handleSubmit = e => {
     e.preventDefault();
     // console.log(gaadeData);
@@ -40,27 +35,25 @@ function Gaaderet() {
 
   };
 
-  // Metode 1 - if
-
   let gaaden = "";
 
   if (gaadeData) {
     gaaden = (
-      <div className="Cartoonret container">
+      <div className="container">
         <h1 className="text-center m-5">Ret gåde</h1>
         <div className="container" style={{maxWidth: '40rem'}}>
         <form className="text-left">
-          <label htmlFor="navn" className="font-weight-bold">Gåden</label>
+          <label htmlFor="gaade" className="font-weight-bold">Gåden</label>
           <input
-            id="navn"
+            id="gaade"
             type="text"
             className="form-control mb-3 bg-info text-white"
             onChange={(e) => setGaadeData({ ...gaadeData, gaadeTekst: e.target.value})}
             value={gaadeData.gaadeTekst}
           />
-          <label htmlFor="skaber" className="font-weight-bold">Gådens svar</label>
+          <label htmlFor="svar" className="font-weight-bold">Gådens svar</label>
           <input
-            id="skaber"
+            id="svar"
             type="text"
             className="form-control mb-3 bg-info text-white"
             onChange={(e) => setGaadeData({ ...gaadeData, gaadeSvar: e.target.value})}
@@ -84,8 +77,7 @@ function Gaaderet() {
   }
 
   // Udskriv her
-
   return <div>{gaaden}</div>;
 }
 
-export default Gaaderet;
+export default Ret;

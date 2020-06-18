@@ -1,36 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { hentAlleGaader } from "./shared/GaaderAPI";
+import { hentAlleGaader } from "./API/GaaderAPI";
 
 function Gaader() {
-  
-
   // State
 
-  const [Admin, setAdmin] = useState([]);
+  const [gaader, setGaader] = useState([]);
 
   // useEffect
 
   useEffect(() => {
-
-      hentAlleGaader().then(setAdmin);
-
+    hentAlleGaader().then(setGaader);
   }, []);
 
-  // Metode 1 - map
+  let gaaderList = "";
 
-  let AdminList = "";
-
-  if (Admin.length > 0) {
-    AdminList = Admin.map(c => {
+  if (gaader.length > 0) {
+    gaaderList = gaader.map((g) => {
       return (
-          <div className="col-md-6 col-lg-4" key={c._id}>
-            <div className="card mb-4 box-shadow">
-    <div className="card-body">
-      <h5 className="card-title">{c.gaadeTekst}</h5>
-      <p className="card-text">{c.gaadeSvar}</p>
-    </div>
-  </div>
-  </div>
+        <div className="col-md-6 col-lg-4" key={g._id}>
+          <div className="card mb-4 box-shadow">
+            <div className="card-body">
+              <h5 className="card-title">{g.gaadeTekst}</h5>
+              <p className="card-text">{g.gaadeSvar}</p>
+            </div>
+          </div>
+        </div>
       );
     });
   } else {
@@ -40,12 +34,10 @@ function Gaader() {
   // Udskriv her
 
   return (
-    <div className="AdminJokes">
+    <div>
       <h1 className="text-center m-5">Alle gåder</h1>
       <div className="container">
-      <div className="card-deck row">
-        {AdminList}
-      </div>
+        <div className="card-deck row">{gaaderList}</div>
       </div>
     </div>
   );

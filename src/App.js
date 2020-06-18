@@ -2,20 +2,22 @@ import React, { useContext} from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+// Context
 import AuthDataProvider from './components/context/AuthDataContext';
+
 // Navbar 
 import Navbar from './components/Navbar';
 
-// Pages
+// Home / login
 import Home from './components/Home';
+import Login from './components/login/Login';
 
-// Admin components
-import AdminGaader from './components/Admin/AdminGaader';
-import Gaaderet from './components/Admin/Gaaderet';
-import Gaadeopret from './components/Admin/Gaadeopret';
-import Gaadeslet from './components/Admin/Gaadeslet';
+// Admin
+import GaadeAdmin from './components/adminGaader/Admin';
+import GaadeRet from './components/adminGaader/Ret';
+import GaadeOpret from './components/adminGaader/Opret';
+import GaadeSlet from './components/adminGaader/Slet';
 
-import LoginAdmin from './components/Admin/LoginAdmin';
 
 import {AuthDataContext} from './components/context/AuthDataContext';
 
@@ -23,14 +25,9 @@ const PrivateRoute = ({ component, ...options }) => {
   const {loggedIn} = useContext(AuthDataContext);
   console.log('privateroute: loggedIn', loggedIn)
 
-  const finalComponent = loggedIn ? component : LoginAdmin;
+  const finalComponent = loggedIn ? component : Login;
   return <Route {...options} component={finalComponent} />
 }
-
-
-
-
-
 
 
 function App () {
@@ -42,12 +39,12 @@ function App () {
           <Navbar/>
           <Switch>
           <Route exact path='/' component={Home} />
-          <Route exact path='/login' component={LoginAdmin} />
+          <Route exact path='/login' component={Login} />
 
-          <PrivateRoute exact path='/admin' component={AdminGaader} />
-          <PrivateRoute excat path="/opret" component={Gaadeopret} />
-          <PrivateRoute exact path="/ret/:gaadeData_id" component={Gaaderet} />
-          <PrivateRoute exact path="/slet/:gaadeData_id" component={Gaadeslet} />
+          <PrivateRoute exact path='/admin' component={GaadeAdmin} />
+          <PrivateRoute excat path="/opret" component={GaadeOpret} />
+          <PrivateRoute exact path="/ret/:gaadeData_id" component={GaadeRet} />
+          <PrivateRoute exact path="/slet/:gaadeData_id" component={GaadeSlet} />
           
           </Switch>
         </div>

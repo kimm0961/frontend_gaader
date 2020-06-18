@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { hentAlleGaader } from "../shared/GaaderAPI";
+import { hentAlleGaader } from "../API/GaaderAPI";
 
-function AdminGaader() {
+function Admin() {
   
-
   // State
 
   const [Admin, setAdmin] = useState([]);
@@ -18,19 +17,17 @@ function AdminGaader() {
 
   }, []);
 
-  // Metode 1 - map
-
   let AdminList = "";
 
   if (Admin.length > 0) {
-    AdminList = Admin.map(c => {
+    AdminList = Admin.map(g => {
       return (
-        <tr key={c._id}>
-          <td className="font-weight-lighter">{c._id}</td>
-          <td className="font-weight-bold">{c.gaadeTekst}</td>
-          <td className="font-italic">{c.gaadeSvar}</td>
+        <tr key={g._id}>
+          <td className="font-weight-lighter">{g._id}</td>
+          <td className="font-weight-bold">{g.gaadeTekst}</td>
+          <td className="font-italic">{g.gaadeSvar}</td>
           <td>
-            <Link to={"/ret/" + c._id}>
+            <Link to={"/ret/" + g._id}>
             <button type="button" className="btn btn-primary">
               <span role="img" aria-label="ret">
                 &#9998;
@@ -39,7 +36,7 @@ function AdminGaader() {
             </Link>
           </td>
           <td>
-            <Link to={"/slet/" + c._id}>
+            <Link to={"/slet/" + g._id}>
             <button type="button" className="btn btn-danger"><span role="img" aria-label="delete">
                 &#10060;
               </span></button>
@@ -55,7 +52,7 @@ function AdminGaader() {
   // Udskriv her
 
   return (
-    <div className="Admin">
+    <div>
       <h1 className="text-center m-5">Gåder List</h1>
       <Link to="/opret">
               <button type="button" className="btn btn-success mb-5">
@@ -85,4 +82,4 @@ function AdminGaader() {
   );
 }
 
-export default AdminGaader;
+export default Admin;

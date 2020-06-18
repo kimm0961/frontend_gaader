@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const AuthAPI = {
-  baseUrl: "https://gaader-heroku.herokuapp.com/auth",
-  apiKey: ""
+  baseUrl: "https://gaader-heroku.herokuapp.com/auth"
 };
 
 // login

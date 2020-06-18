@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
-import { opretGaade } from "../shared/GaaderAPI";
+import { opretGaade } from "../API/GaaderAPI";
 
 
-function Gaadeopret() {
+function Opret() {
   // State
   const [gaadeData, setGaadeData] = useState({});
 
   const history = useHistory();
 
-
   // Submit
   const handleSubmit = e => {
     e.preventDefault();
-    // console.log(cartoon);
 
     (async () => {
       setGaadeData(await opretGaade(gaadeData));
@@ -25,23 +23,23 @@ function Gaadeopret() {
   // Udskriv
 
   return (
-    <div className="Jokeopret container">
+    <div className="container">
       <h1 className="text-center m-5">Opret en ny gåde</h1>
       <div className="container" style={{maxWidth: '40rem'}}>
       <form className="text-left">
-        <label htmlFor="navn" className="font-weight-bold">Gåden:</label>
+        <label htmlFor="gaade" className="font-weight-bold">Gåden:</label>
         <input
-          id="navn" type="text"
+          id="gaade" type="text"
           className="form-control mb-3 bg-info text-white"
-         required name="navn"
+         required name="gaade"
          onChange={(e) => setGaadeData({ ...gaadeData, gaadeTekst: e.target.value})}
           value={gaadeData.gaadeTekst}
         />
-        <label htmlFor="skaber" className="font-weight-bold">Gådens svar</label>
+        <label htmlFor="svar" className="font-weight-bold">Gådens svar</label>
         <input
-          id="skaber" type="text"
+          id="svar" type="text"
           className="form-control mb-3 bg-info text-white"
-         required name="skaber" onChange={(e) => setGaadeData({ ...gaadeData, gaadeSvar: e.target.value})}
+         required name="svar" onChange={(e) => setGaadeData({ ...gaadeData, gaadeSvar: e.target.value})}
           value={gaadeData.gaadeSvar}
         />
       </form>
@@ -60,4 +58,4 @@ function Gaadeopret() {
   );
 }
 
-export default Gaadeopret;
+export default Opret;
